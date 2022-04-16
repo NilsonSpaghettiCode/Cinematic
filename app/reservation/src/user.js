@@ -1,6 +1,6 @@
 'use strict';
-const {Model} = require('sequelize');
-const Person = require('./person')
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.BelongsTo(models.Person);
-      models.Person.hasOne(User);
+      User.belongsTo(models.Person);
+      User.hasMany(models.Reservation);
     }
   }
   User.init({
@@ -26,5 +26,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return User;
 };
-
-User.BelongsTo(Person);
