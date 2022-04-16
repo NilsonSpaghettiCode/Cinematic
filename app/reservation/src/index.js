@@ -5,7 +5,7 @@ const cors = require('cors')
 // Local dependencies/modules
 const reservations = require('./routes/reservations')
 
-// Instances and variables
+// Instances & variables
 const app = express();
 const port = process.env.PORT || 5240;
 
