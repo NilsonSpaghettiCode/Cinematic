@@ -15,7 +15,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       state: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
+      },
+      rol: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
@@ -26,7 +31,13 @@ module.exports = {
         type: Sequelize.DATE
       },
       personId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'People',
+          key: 'id',
+          onDelete: 'cascade',
+          onUpdate: 'cascade',
+        },
       }
     });
   },

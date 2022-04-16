@@ -1,7 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const {Model} = require('sequelize');
+const Person = require('./person')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -19,9 +18,13 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     state: DataTypes.BOOLEAN,
+    rol: DataTypes.BOOLEAN,
+    idPerson: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'User',
   });
   return User;
 };
+
+User.BelongsTo(Person);
