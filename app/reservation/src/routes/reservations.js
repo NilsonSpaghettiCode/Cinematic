@@ -1,10 +1,12 @@
 // Express router
+const {Reservation} = require('../models/reservation');
 
 const router = require('express').Router();
 
 // Routes
 router.get('/', (req, res) => {
-	res.json({msg: 'Hello world'})
+	const reservations = Reservation.findAll();
+	res.json(reservations);
 });
 
 module.exports = router;
