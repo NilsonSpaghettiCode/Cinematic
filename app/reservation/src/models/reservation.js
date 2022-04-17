@@ -1,5 +1,8 @@
 'use strict';
-const { Model } = require('sequelize');
+const { Sequelize, Model, DataTypes } = require("sequelize");
+const sequelize = new Sequelize("postgresql::memory");
+
+
 
 module.exports = (sequelize, DataTypes) => {
   class Reservation extends Model {
@@ -13,13 +16,18 @@ module.exports = (sequelize, DataTypes) => {
       Reservation.belongsTo(models.User);
     }
   }
+  
   Reservation.init({
     idClient: DataTypes.INTEGER,
     state: DataTypes.BOOLEAN,
     totalValue: DataTypes.FLOAT
-  }, {
+  }, 
+
+  {
     sequelize,
     modelName: 'Reservation',
   });
-  return Reservation;
+
+  module.exports = Reservation;
+  
 };

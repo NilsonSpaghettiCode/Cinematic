@@ -1,5 +1,8 @@
 'use strict';
-const { Model } = require('sequelize');
+const { Sequelize, Model, DataTypes } = require("sequelize");
+const sequelize = new Sequelize("postgresql::memory");
+
+
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -24,5 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'User',
   });
-  return User;
+
+  module.exports = User;
+
 };
