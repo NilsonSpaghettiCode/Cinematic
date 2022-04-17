@@ -16,7 +16,8 @@ module.exports = {
         }
       },
       state: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
       },
       totalValue: {
         type: Sequelize.FLOAT
@@ -28,7 +29,7 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
     });
   },
   async down(queryInterface, Sequelize) {
