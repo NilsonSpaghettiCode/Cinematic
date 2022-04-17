@@ -28,25 +28,19 @@ router.post('/reservation/new', async (req, res)=>{
     console.log(req.body);
     res.send("Petición post recibida");
     
-    // const {idCliente, state, totalValue} = req.body;
-    // if(!idCliente || !state || !totalValue){
-    //     return res.status(400).json({
-    //         error: "One or more fields are empty"
-    //     });
-    // }
-    // const reservation = await Reservation.create({idCliente, state, totalValue});
-    // res.json(reservation);
 });
 
 // Person creation route
-router.post('/person/new', async (req, res)=>{
-    
-    
-    
-    
+router.post('/person/new', async (req, res) => {
     Person.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        address: req.body.address
 
+    }).then(reservation => {
+        res.send("A new register was created");
     });
+
 });
 
 // User creation route
