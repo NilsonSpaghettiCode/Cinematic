@@ -1,7 +1,11 @@
 'use strict';
 
 const { Sequelize, Model, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("postgres::memory");
+
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
 class Person extends Model {
     /**
      * Helper method for defining associations.
