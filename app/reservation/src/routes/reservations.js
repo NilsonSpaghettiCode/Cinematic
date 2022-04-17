@@ -9,17 +9,17 @@ router.get('/', (req, res) => {
 
 
 // Create Routes
-app.post('/reservations/new', (req, res)=>{
+router.post('/reservation/new', (req, res)=>{
     console.log(req.body);
     res.send("Petición post recibida");
 });
 
-app.post('/person/new', (req, res)=>{
+router.post('/person/new', (req, res)=>{
     console.log(req.body);
     res.send("Petición post recibida");
 });
 
-app.post('/user/new', (req, res)=>{
+router.post('/user/new', (req, res)=>{
     console.log(req.body);
     res.send("Petición post recibida");
 });
