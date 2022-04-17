@@ -18,15 +18,12 @@ router.get('/', (req, res) => {
 // Reservation creation route
 router.post('/reservation/new', async (req, res)=>{
     Reservation.create({
-        idCliente: req.body.idCliente,
+        idClient: req.body.idClient,
         state: req.body.state,
         totalValue: req.body.totalValue
     }).then(reservation=>{
-        res.send("A reservation was created");
-    });
-    
-    console.log(req.body);
-    res.send("Petición post recibida");
+        res.send("A new register was created");
+    });        
     
 });
 
@@ -37,16 +34,24 @@ router.post('/person/new', async (req, res) => {
         lastName: req.body.lastName,
         address: req.body.address
 
-    }).then(reservation => {
+    }).then(person => {
         res.send("A new register was created");
     });
-
 });
 
 // User creation route
 router.post('/user/new', async (req, res)=>{
-    
+    User.create({
+        email: req.body.email,
+        password: req.body.password,
+        state: req.body.state,
+        rol:req.body.rol,
+        personId: req.body.personId,
+    }).then(user => {
+        res.send("A new register was created");
+    });
     
 });
+
 
 module.exports = router;
