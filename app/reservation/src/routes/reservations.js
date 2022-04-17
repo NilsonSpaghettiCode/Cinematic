@@ -14,15 +14,16 @@ router.get('/', (req, res) => {
 
 // Create Routes
 router.post('/person/new', (req, res)=>{
-    
-    
-
-
-    console.log(req.body);
+   
     res.send("Petición post recibida");
 });
 
 router.post('/reservation/new', (req, res)=>{
+    let aux = new Reservation();
+    aux.fin
+
+
+    console.log(req.body);
     console.log(req.body);
     res.send("Petición post recibida");
 });
