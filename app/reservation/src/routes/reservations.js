@@ -1,5 +1,4 @@
 // Express router
-
 const router = require('express').Router();
 
 const Person = require('../models/person.js');
@@ -13,27 +12,22 @@ router.get('/', (req, res) => {
 
 
 // Create Routes
-router.post('/person/new', (req, res)=>{
-   
-    res.send("Petición post recibida");
-});
 
 router.post('/reservation/new', (req, res)=>{
-    let aux = new Reservation();
-    aux.fin
+    
+    // Reservation creation
+    Reservation.create({
+        idCliente: req.body.idCliente,
+        state: req.body.state,
+        totalValue: req.body.totalValue
+    }).then(reservation=>{
+        res.send("A reservation was created");
+    });
 
 
-    console.log(req.body);
     console.log(req.body);
     res.send("Petición post recibida");
 });
-
-
-router.post('/user/new', (req, res)=>{
-    console.log(req.body);
-    res.send("Petición post recibida");
-});
-
 
 
 module.exports = router;

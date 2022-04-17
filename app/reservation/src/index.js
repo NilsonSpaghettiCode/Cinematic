@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors')
 
 // Local dependencies/modules
-const reservations = require('./routes/reservations.js')
+const reservations = require('./routes/reservations')
 
 // Instances and variables
 const app = express();

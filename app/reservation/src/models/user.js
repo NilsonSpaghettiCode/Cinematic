@@ -1,6 +1,6 @@
 'use strict';
 const { Sequelize, Model, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("postgresql::memory");
+const sequelize = new Sequelize("postgres::memory");
 class User extends Model {
     /**
      * Helper method for defining associations.
