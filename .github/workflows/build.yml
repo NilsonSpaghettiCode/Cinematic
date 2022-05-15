@@ -3,7 +3,8 @@ on:
   push:
     branches:
       - master
-      - release-development
+      - reservation_us-create-reservation
+      - branch/reservation_us-create-reservation
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
