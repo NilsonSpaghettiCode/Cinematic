@@ -1,8 +1,9 @@
+const service = require("express");
 
-const { response } = require("express");
-const server = require("express");
+service.disable("x-powered-by");
+
 const port = 5240;
-var service = server();
+
 service.get('/', function name(request, response) {
     response.send("Sending response..");
     
