@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "postgres",
-    "password": "1234",
+    "password": "admin",
     "database": "cinematic_db",
     "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "1234",
+    "password": "admin",
     "database": "cinematic_db",
     "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
-    "password": "1234",
+    "password": "admin",
     "database": "cinematic_db",
     "host": "localhost",
     "dialect": "postgres"

@@ -5,7 +5,7 @@ const cors = require('cors')
 // Local dependencies/modules
 const reservations = require('./routes/reservations')
 
-// Instances & variables
+// Instances and variables
 const app = express();
 const port = process.env.PORT || 5240;
 
@@ -15,6 +15,8 @@ app.use(cors());
 
 // Routes
 app.use('/reservations', reservations);
+
+
 
 app.listen(port, () => {
     console.log(`New Connection! ${port}`);

@@ -1,8 +1,12 @@
 'use strict';
-const { Model } = require('sequelize');
+const { Sequelize, Model, DataTypes } = require("sequelize");
 
-module.exports = (sequelize, DataTypes) => {
-  class Reservation extends Model {
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
+class Reservation extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,13 +17,17 @@ module.exports = (sequelize, DataTypes) => {
       Reservation.belongsTo(models.User);
     }
   }
+
   Reservation.init({
     idClient: DataTypes.INTEGER,
     state: DataTypes.BOOLEAN,
     totalValue: DataTypes.FLOAT
-  }, {
+  }, 
+
+  {
     sequelize,
     modelName: 'Reservation',
   });
-  return Reservation;
-};
+
+module.exports = Reservation;
+  
