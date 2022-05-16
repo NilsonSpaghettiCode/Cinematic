@@ -1,6 +1,9 @@
 const service = require("express");
 
 service.disable("x-powered-by");
+service.disable("x-powered-by");
+service.disable("x-powered-by");
+service.disable("x-powered-by");
 
 const port = 5240;
 
