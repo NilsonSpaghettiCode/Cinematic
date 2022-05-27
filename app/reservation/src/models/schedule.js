@@ -19,8 +19,8 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
   }
 
   Schedule.init({
-    startAt: DataTypes.DATE,
-    endAt: DataTypes.DATE
+    startAt: DataTypes.TIME,
+    endAt: DataTypes.TIME
   }, {
     sequelize,
     modelName: 'Schedule',

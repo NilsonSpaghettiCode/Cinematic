@@ -37,7 +37,7 @@ class ControllerScheduleImp extends IController
         let resp = {};
         let schedule = await this.Imodel.findByPk(params.id);
         if(schedule != null){
-            await movie.set(changes);
+            await schedule.set(changes);
             let model_update = await schedule.save();
             resp.status = 200;
             resp.update = model_update;
