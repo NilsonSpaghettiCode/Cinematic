@@ -4,11 +4,12 @@ const { Model, Sequelize, DataTypes,  } = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const Movie = require('./movie.js')
 
 class BranchImp extends Model
 {
     static associate(models){        
-
+        BranchImp.belongsToMany(models.MovieImp, { through: models.Billboard });
     }
 }
 
@@ -28,9 +29,6 @@ BranchImp.init({
     modelName: 'Branch'
 }
 );
-
-//let test = new BranchImp();
-//test.v
 
 module.exports = BranchImp;
 

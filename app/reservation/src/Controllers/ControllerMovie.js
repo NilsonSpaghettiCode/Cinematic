@@ -1,5 +1,6 @@
 const IController = require('../interfaces/IController');
 
+const BranchImp  = require('../models/branch')
 class ControllerMovieImp extends IController {
     constructor(Imodel) {
         super();
@@ -10,11 +11,17 @@ class ControllerMovieImp extends IController {
         //implement method
         let status = null;
         console.log(params)
-        await this.Imodel.create(params).then(()=>{
+        await this.Imodel.create(params).then( async (movie)=>{
+            //console.log(movie)
             status = 201;
-        }).catch( ()=>{
+            // let branch = await BranchImp.findByPk(1);
+            // let add_movie = await movie.addBranch(branch);
+            // console.log("Result",add_movie);
+        })
+        .catch( ()=>{
             status = 200;
         });
+        //modelInstance.addBranchs(params.branches);
         return status;
     };
 
