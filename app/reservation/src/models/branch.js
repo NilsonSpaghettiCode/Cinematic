@@ -3,30 +3,33 @@ const { Model,Sequelize, DataTypes,  } = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
 class BranchImp extends Model
 {
     static associate(models){        
-        BranchImp.hasMany('//Salas');
-    }
-
-    retrieve(req){
-        console.log('La reserva ha sido creada');
+        //BranchImp.hasMany('//Salas');
     }
 }
 
 //Set atributes ORM 
 BranchImp.init({
     
-    idBranch:DataTypes.INTEGER,
-    branchName:DataTypes.STRING,
-    opening:DataTypes.DATE,
-    closing:DataTypes.DATE,   
+    branchName:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+    opening:DataTypes.TIME,
+    closing:DataTypes.TIME,   
 },
 {
     sequelize,
+    timestamps:false,
     modelName: 'Branch'
 }
 );
+
+//let test = new BranchImp();
+//test.v
 
 module.exports = BranchImp;
 

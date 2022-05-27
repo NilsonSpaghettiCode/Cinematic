@@ -5,31 +5,23 @@ module.exports = {
   
   async up (queryInterface, Sequelize) {
 
-    await queryInterface.createTable('Branch', {
-      idBranch: {
+    await queryInterface.createTable('Branches', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       branchName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       opening: {
-        type: Sequelize.DATE
+        type: Sequelize.TIME
       },
       closing: {
-        type: Sequelize.DATE,
-
+        type: Sequelize.TIME,
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
     /**
      * Add altering commands here.
@@ -46,6 +38,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-     await queryInterface.dropTable('Branchs');
+     await queryInterface.dropTable('Branches');
   }
 };
