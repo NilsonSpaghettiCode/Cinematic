@@ -1,6 +1,8 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
-
+'use strict';
+const { Model,Sequelize, DataTypes,  } = require('sequelize');
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
 class BranchImp extends Model
 {
     static associate(models){        
@@ -17,8 +19,12 @@ BranchImp.init({
     
     idBranch:DataTypes.INTEGER,
     branchName:DataTypes.STRING,
-    opening:DataTypes.FLOAT,
-    closing:DataTypes.FLOAT,   
+    opening:DataTypes.DATE,
+    closing:DataTypes.DATE,   
+},
+{
+    sequelize,
+    modelName: 'Branch'
 }
 );
 

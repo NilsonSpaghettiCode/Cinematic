@@ -20,5 +20,5 @@ app.use('/reservations', reservations);
 
 
 app.listen(port, () => {
-    console.log(`New Connection! ${port}`);
+    console.log(`Listen on! ${port}`);
 });
