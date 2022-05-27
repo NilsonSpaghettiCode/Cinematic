@@ -7,7 +7,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 class BranchImp extends Model
 {
     static associate(models){        
-        //BranchImp.hasMany('//Salas');
+
     }
 }
 

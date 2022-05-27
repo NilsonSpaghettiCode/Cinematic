@@ -12,9 +12,9 @@ class ControllerBranchImp extends IController {
         await this.Imodel.create(params).then(()=>{
             status = 201;
         }).catch( ()=>{
-            status = 200
+            status = 200;
         });
-        return status
+        return status;
     };
 
     async delete(params){

@@ -1,11 +1,10 @@
-const Model  = require("sequelize");
 class IController
 {
     create() {};
     delete() {};
     update() {};
     retrieve() {};
-    setModel(Model) {};
+    retrieveByPk() {};
 }
 
 module.exports = IController;
