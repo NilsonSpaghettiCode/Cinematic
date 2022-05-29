@@ -1,10 +1,11 @@
 'use strict';
-const { Sequelize, Model, DataTypes } = require("sequelize");
-
+const { Model } = require("sequelize");
+const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
 const Branch = require('./branch')
 const Movie = require('./movie')
 
@@ -23,7 +24,7 @@ class Billboard extends Model {
 Billboard.init({
   movieId:
   {
-    type: DataTypes.INTEGER,
+    type: Sequelize.DataTypes.INTEGER,
     references:
     {
       model:Movie,
@@ -32,7 +33,7 @@ Billboard.init({
   },
   branchId:
   {
-    type: DataTypes.INTEGER,
+    type: Sequelize.DataTypes.INTEGER,
     references:
     {
       model:Movie,

@@ -1,17 +1,15 @@
 const route = require('express').Router();
 
 const ControllerMovieImp = require('../Controllers/ControllerMovie.js');
-
-
-const MovieImp = require("../models/movie.js");
+const MovieImp = require("../models/movie");
 
 //Muestra todas las peliculas guardadas
-route.get('/', async (req,res)=>
+route.get('/', async (_req,res)=>
 {
     const controller = new ControllerMovieImp(MovieImp);
     let movies = await controller.retrieve();
     res.json(movies);
-})
+});
 
 //Muestra una pelicula y toda su información segun su ID
 route.get('/:id',async (req, res)=>
@@ -20,7 +18,6 @@ route.get('/:id',async (req, res)=>
     let resp = await controller.retrieveByPk(req.params);
     res.statusCode = resp.status
     res.json(resp)
-    
 });
 
 route.get('/:id/branchs', async (req, res) =>
@@ -28,7 +25,7 @@ route.get('/:id/branchs', async (req, res) =>
     const controller = new ControllerMovieImp(MovieImp)
     let resp = await controller.retrieveMovieBranch(req.params)
     console.log(resp)
-    res.json({'state':'ok'});
+    res.json({'state':'ok', resp});
 })
 
 route.post('/', async (req, res)=>
@@ -51,7 +48,6 @@ route.delete('/:id', async (req, res)=>{
     let resp = await controller.delete(req.params)
     res.statusCode = resp.status;
     res.json(resp);
-
 });
 
 module.exports = route;

@@ -17,7 +17,7 @@ class MovieImp extends Model {
    */
   static associate(models) {
       // define association here
-      MovieImp.belongsToMany(models.Branch, { through: models.Billboard, targetKey:'id', foreignKey:'movieId', as:'Billboards'});
+      MovieImp.belongsToMany(models.Branch, { through: models.Billboard, targetKey:'id', foreignKey:'movieId'});
   }
 }
 

@@ -1,6 +1,7 @@
 // Dependencies
 const express = require('express');
 const cors = require('cors')
+const { Models } = require('./models');
 
 // Local dependencies/modules
 const reservations = require('./routes/reservations');
