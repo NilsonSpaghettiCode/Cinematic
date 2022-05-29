@@ -5,8 +5,8 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
-const BranchImp = require('./branch')
-const MovieImp = require('./movie')
+const Branch = require('./branch')
+const Movie = require('./movie')
 
 class Billboard extends Model {
   /**
@@ -14,21 +14,37 @@ class Billboard extends Model {
   * This method is not a part of Sequelize lifecycle.
   * The `models/index` file will call this method automatically.
   */
-  static associate(models) 
-  {
-    Billboard.belongsTo(models.BranchImp);
-    Billboard.belongsTo(models.MovieImp);
+  static associate(models) {
+    //Billboard.belongsTo(models.Branch);
+    //Billboard.belongsTo(models.Movie);
   }
 }
 
 Billboard.init({
-  
-  movieId: DataTypes.INTEGER,
-  branchId: DataTypes.INTEGER
+  movieId:
+  {
+    type: DataTypes.INTEGER,
+    references:
+    {
+      model:Movie,
+      key:'id'
+    }
+  },
+  branchId:
+  {
+    type: DataTypes.INTEGER,
+    references:
+    {
+      model:Movie,
+      key:'id'
+    }
+
+  }
 
 }, {
   sequelize,
   modelName: 'Billboard',
+
 });
 
 module.exports = Billboard;

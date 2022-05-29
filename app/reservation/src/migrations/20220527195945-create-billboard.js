@@ -2,12 +2,13 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Billboards', {
+      /** 
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
+      },*/
       movieId: {
         type: Sequelize.INTEGER,
         references: {

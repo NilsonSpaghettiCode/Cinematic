@@ -39,5 +39,7 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
      await queryInterface.dropTable('Branches');
+     await queryInterface.dropTable('Branchs');
+     
   }
 };

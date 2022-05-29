@@ -5,7 +5,6 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-const BranchImp = require('./branch');
 //const BillBoard = require('./billboard');
 
 
@@ -18,7 +17,7 @@ class MovieImp extends Model {
    */
   static associate(models) {
       // define association here
-      MovieImp.belongsToMany(models.BranchImp, { through: 'Billboard' });
+      MovieImp.belongsToMany(models.Branch, { through: models.Billboard, targetKey:'id', foreignKey:'movieId', as:'Billboards'});
   }
 }
 
@@ -36,4 +35,12 @@ MovieImp.init({
   modelName: 'Movie',
 });
 
+//MovieImp.associate();
+/**
+ * 
+function name(params) {
+  let movie = MovieImp.findByPk(1)
+  movie.
+}
+*/
 module.exports = MovieImp;
