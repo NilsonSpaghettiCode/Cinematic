@@ -20,7 +20,7 @@ class CinemaHall extends Model {
     CinemaHall.belongsToMany(models.Movie, { through: models.Showtime, targetKey:'id', foreignKey: 'cinemahallId'});
     CinemaHall.belongsToMany(models.Schedule, { through: models.Showtime, targetKey: 'id', foreignKey: 'cinemahallId'});
     
-    CinemaHall.belongsToMany(models.Cinemat, {through:models.CinemaHallType, targetKey:'id', foreignKey: 'cinematId'}) //CambiarID
+    CinemaHall.belongsToMany(models.Cinemat, {through:models.CinemaHallType, targetKey:'id', foreignKey: 'cinemahallId'}) //CambiarID
   }
 }
 CinemaHall.init({

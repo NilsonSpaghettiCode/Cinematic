@@ -11,22 +11,24 @@ class ControllerMovieImp extends IController {
 
     async create(body) {
         //implement method
-        let status = null;
+        let resp = {}
+
         console.log(body)
         await this.Imodel.create(body.movie).then(async (movie) => {
             movie.setBranches(body.branches)
-            console.log("bRNACHES", await movie.getBranches() )
-            //console.log(movie)
-            status = 201;
-            // let branch = await BranchImp.findByPk(1);
-            // let add_movie = await movie.addBranch(branch);
-            // console.log("Result",add_movie);
+            resp = {
+                movie,
+                branches: await movie.getBranches(),
+                status: 200
+            }
         })
             .catch(() => {
-                status = 200;
+                resp = {
+                    "status": 401
+                };
             });
         //modelInstance.addBranchs(params.branches);
-        return status;
+        return resp;
     };
 
     async delete(params) {

@@ -29,9 +29,9 @@ route.get('/:id/cinemat',async (req, res)=>
 
 route.post('/', async (req, res) => {
     const controller = new ControllerCinemaHallImp(CinemaHall);
-    let status = await controller.create(req.body);
-    res.sendStatus(status);
-
+    let resp = await controller.create(req.body);
+    
+    res.status(resp.status).json(resp)
 });
 
 route.put('/:id', async (req, res) => {

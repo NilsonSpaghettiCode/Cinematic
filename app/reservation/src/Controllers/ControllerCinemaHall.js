@@ -6,15 +6,24 @@ class ControllerCinemaHall extends IController {
         this.Imodel = Imodel;
     }
 
-    async create(params) {
+    async create(body) {
         //implement method
-        let status = null;
-        await this.Imodel.create(params).then(() => {
-            status = 201;
+        let resp = {}
+
+        await this.Imodel.create(body.cinemahall).then(async (cinemahall) => {
+            console.log("",body.cinemats)
+
+            await cinemahall.setCinemats(body.cinemats);
+            resp = {
+                cinemahall,
+                cinema_types: await cinemahall.getCinemats(),
+                status: 200
+            }
         }).catch(() => {
-            status = 200;
+            resp.status = 400
         });
-        return status;
+
+        return resp;
     };
 
     async delete(params) {

@@ -8,7 +8,7 @@ class ControllerBranchImp extends IController {
 
     async create(params){   
         //implement method
-        let status = null;
+        let status = {};
         await this.Imodel.create(params).then(()=>{
             status = 201;
         }).catch( ()=>{

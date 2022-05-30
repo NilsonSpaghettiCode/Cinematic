@@ -4,7 +4,7 @@ const ControllerMovieImp = require('../Controllers/ControllerMovie.js');
 const MovieImp = require("../models/movie");
 
 //Muestra todas las peliculas guardadas
-route.get('/', async (_req,res)=>
+route.get('/', async (req,res)=>
 {
     const controller = new ControllerMovieImp(MovieImp);
     let movies = await controller.retrieve();
@@ -31,8 +31,8 @@ route.get('/:id/branchs', async (req, res) =>
 route.post('/', async (req, res)=>
 {
     const controller = new ControllerMovieImp(MovieImp)
-    let status = await controller.create(req.body);
-    res.sendStatus(status);
+    let resp = await controller.create(req.body);
+    res.status(resp.status).json(resp)
 });
 
 route.put('/:id', async (req, res)=>{
