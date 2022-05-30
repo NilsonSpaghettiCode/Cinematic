@@ -8,7 +8,8 @@ const reservations = require('./routes/reservations');
 const branch = require('./routes/branch');
 const cinemat = require('./routes/cinemat');
 const schedule = require('./routes/schedule')
-const movie = require('./routes/movie')
+const movie = require('./routes/movie');
+const cinemahall = require('./routes/cinemahall');
 
 // Instances and variables
 const app = express();
@@ -24,6 +25,7 @@ app.use('/reservations', reservations);
 app.use('/schedule', schedule);
 app.use('/cinemat', cinemat);
 app.use('/movie', movie);
+app.use('/cinemahall', cinemahall)
 
 
 app.listen(port, () => {

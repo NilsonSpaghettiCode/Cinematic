@@ -69,6 +69,57 @@ class ControllerBranchImp extends IController {
         return resp; 
     };
 
-};
+    //Retorna la cartelera de una sede
+    
+    async retrieveMoviesOfBranch(params){
+        let resp = {}
+        let branch = {}
+        let branchMovies = {}
+        try {
+        branch = await this.Imodel.findByPk(params.id)
+        branchMovies = await branch.getMovies()   
+        resp = {
+            branch,
+            Movies: branchMovies,
+            status: 200
+        }
 
+        } catch (error) {
+            resp.error = error
+            resp.status = 400
+        }
+        
+        return resp; 
+    };
+
+    async retrieveCinemaHallsOfBranch(params){
+        
+        let resp = {}
+        try{
+            let branch = await this.Imodel.findByPk(params.id)
+            let branchCinemaHall = await branch.getCinemaHalls()
+
+            resp = {
+                branch,
+                Halls: branchCinemaHall,
+                status: 200
+            }
+        }catch (error){
+            resp.error = error;
+            resp.status = 400;
+        }
+
+        return resp; 
+    };
+
+};
+/**
+ * 
+ * (branch)=>{
+            resp = {
+                "branch": branch,
+                "status": 201
+            }
+        }
+ */
 module.exports = ControllerBranchImp;

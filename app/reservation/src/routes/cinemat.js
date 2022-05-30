@@ -1,8 +1,6 @@
 const route = require('express').Router();
 
 const ControllerCinematImp = require('../Controllers/ControllerCinemat.js')
-
-
 const CinematImp = require("../models/cinemat.js");
 
 route.get('/', async (req, res) => {

@@ -14,6 +14,8 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
      */
     static associate(models) {
       // define association here
+      Schedule.belongsToMany(models.Movie, { through: models.Showtime, targetKey:'id', foreignKey: 'scheduleId'});
+      Schedule.belongsToMany(models.CinemaHall, { through: models.Showtime, targetKey: 'id', foreignKey: 'scheduleId'});
     }
 
   }

@@ -1,4 +1,5 @@
 'use strict';
+
 const { Model } = require("sequelize");
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
@@ -36,7 +37,7 @@ Billboard.init({
     type: Sequelize.DataTypes.INTEGER,
     references:
     {
-      model:Movie,
+      model:Branch,
       key:'id'
     }
 

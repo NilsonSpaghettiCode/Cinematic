@@ -19,7 +19,7 @@ route.get('/:id',async (req, res)=>
     res.statusCode = resp.status
     res.json(resp)
 });
-
+//Muestra las sedes asociadas a una pelicula
 route.get('/:id/branchs', async (req, res) =>
 {
     const controller = new ControllerMovieImp(MovieImp)

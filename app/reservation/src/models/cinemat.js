@@ -13,6 +13,8 @@ class CinematImp extends Model {
      */
     static associate(models) {
       // define association here
+      CinematImp.belongsToMany(models.CinemaHall, {through:models.CinemaHallType, targetKey:'id', foreignKey: 'cinematId'}); //CambiarID
+
     }
   }
   

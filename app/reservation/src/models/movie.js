@@ -18,6 +18,10 @@ class MovieImp extends Model {
   static associate(models) {
       // define association here
       MovieImp.belongsToMany(models.Branch, { through: models.Billboard, targetKey:'id', foreignKey:'movieId'});
+      
+      //Relacion para crear funciones
+      MovieImp.belongsToMany(models.Schedule, { through: models.Showtime, targetKey:'id', foreignKey: 'movieId'});
+      MovieImp.belongsToMany(models.CinemaHall, { through: models.Showtime, targetKey: 'id', foreignKey: 'movieId'});
   }
 }
 

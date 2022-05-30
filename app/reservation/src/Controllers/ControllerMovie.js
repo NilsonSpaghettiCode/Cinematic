@@ -1,6 +1,7 @@
 const IController = require('../interfaces/IController');
 
-const BranchImp = require('../models/branch')
+const BranchImp = require('../models/branch');
+const { param } = require('../routes/schedule');
 
 class ControllerMovieImp extends IController {
     constructor(Imodel) {
@@ -8,11 +9,13 @@ class ControllerMovieImp extends IController {
         this.Imodel = Imodel;
     };
 
-    async create(params) {
+    async create(body) {
         //implement method
         let status = null;
-        console.log(params)
-        await this.Imodel.create(params).then(async (movie) => {
+        console.log(body)
+        await this.Imodel.create(body.movie).then(async (movie) => {
+            movie.setBranches(body.branches)
+            console.log("bRNACHES", await movie.getBranches() )
             //console.log(movie)
             status = 201;
             // let branch = await BranchImp.findByPk(1);
@@ -81,6 +84,8 @@ class ControllerMovieImp extends IController {
     };
 
     async retrieveMovieBranch(params) {
+
+        /** 
         let movie = {}
         await this.Imodel.findOne( {where:{
             id:params.id,
@@ -96,7 +101,11 @@ class ControllerMovieImp extends IController {
         console.log("Movie => ", movie)
         //let movieBranches = await movie.getBranch();
         //console.log('MovieBranches:', movieBranches)
-        return movie
+        */
+        let movie = await this.Imodel.findByPk(params.id);
+        let movieBranches = await movie.getBranches();
+        console.log(movieBranches)
+        return movieBranches
     }
 
 };

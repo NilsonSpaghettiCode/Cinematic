@@ -9,6 +9,7 @@ class BranchImp extends Model
 {
     static associate(models){        
         BranchImp.belongsToMany(models.Movie, { through: models.Billboard, targetKey:'id',foreignKey:'branchId' });
+        BranchImp.hasMany(models.CinemaHall, {foreignKey:'branchId'});
     }
 }
 
